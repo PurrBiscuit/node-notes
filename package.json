@@ -1,0 +1,15 @@
+{
+  "name": "repl-test-env",
+  "version": "1.0.0",
+  "description": "For Testing NPM modules in the Node REPL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "ramda": "^0.27.1"
+  }
+}
