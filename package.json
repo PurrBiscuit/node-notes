@@ -4,13 +4,17 @@
   "description": "For Testing NPM modules in the Node REPL",
   "main": "index.js",
   "scripts": {
+    "repl": "node scripts/repl.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@oryd/kratos-client": "^0.5.4-alpha.1",
     "axios": "^0.21.1",
     "lodash": "^4.17.20",
-    "ramda": "^0.27.1"
+    "ramda": "^0.27.1",
+    "repl": "^0.1.3",
+    "require-dir": "^1.2.0"
   }
 }
