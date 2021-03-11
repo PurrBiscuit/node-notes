@@ -1,5 +1,4 @@
 // when function -> https://ramdajs.com/docs/#when
-const { xor } = require('lodash')
 const { isNil, when } = require('ramda')
 const { underlinePrint } = require('../utils')
 
