@@ -1,5 +1,6 @@
 // when function -> https://ramdajs.com/docs/#when
-const { when } = require('ramda')
+const { xor } = require('lodash')
+const { isNil, when } = require('ramda')
 const { underlinePrint } = require('../utils')
 
 // 'when' is a curried function takes three arguments
@@ -43,3 +44,25 @@ underlinePrint('Using \'when\' to demonstrate a false predicate function:')
 
 const noAdminUser = { name: 'Joe', role: 'leaner', dob: '4/13/1975' }
 console.log(`Request with no admin role:\n${JSON.stringify(grantAdminAccess(noAdminUser), null, 2)}`)
+
+
+// can use other ramda functions to check for true/false
+// instead of creating your own predicate functions as well.
+
+// trying when out with the isNil predicate function
+
+underlinePrint('Using \'when\' with the \'isNil\' ramda function:')
+
+const returnNil = x =>
+  `third argument is a nil value - ${x}`
+
+const checkNil = when(isNil, returnNil)
+
+// the first two will return the result of returnNil
+// since the arguments passed to them are considered nil values.
+console.log(`result of the nil check with null -> ${checkNil(null)}`)
+console.log(`result of the nil check with undefined -> ${checkNil(undefined)}`)
+
+// the following will return the passed in argument, untouched, since
+// it doesn't evaluate to a nil value.
+console.log(`result of the nil check with a string -> ${checkNil('hello there checkNil')}`)
