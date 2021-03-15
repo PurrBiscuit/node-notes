@@ -5,11 +5,12 @@ r = repl.start('recipe_connection > ')
 r.context = Object.assign(
   r.context,
   {
-    lodash: require('lodash'),
-    axios: require('axios'),
-    kratos: require('@oryd/kratos-client'),
-    requireDir: require('require-dir'),
     ...require('ramda'),
-    crypto: require('crypto')
+    axios: require('axios'),
+    crypto: require('crypto'),
+    joi: require('joi'),
+    kratos: require('@oryd/kratos-client'),
+    lodash: require('lodash'),
+    requireDir: require('require-dir')
   }
 )
