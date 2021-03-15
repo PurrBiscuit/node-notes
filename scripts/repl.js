@@ -9,6 +9,7 @@ r.context = Object.assign(
     axios: require('axios'),
     kratos: require('@oryd/kratos-client'),
     requireDir: require('require-dir'),
-    ...require('ramda')
+    ...require('ramda'),
+    crypto: require('crypto')
   }
 )
