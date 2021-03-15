@@ -2,7 +2,7 @@
   "name": "repl-test-env",
   "version": "1.0.0",
   "description": "For Testing NPM modules in the Node REPL",
-  "main": "index.js",
+  "main": "scripts/repl.js",
   "scripts": {
     "repl": "node scripts/repl.js",
     "test": "echo \"Error: no test specified\" && exit 1"
