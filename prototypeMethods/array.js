@@ -1,19 +1,9 @@
 const { underlinePrint } = require('../utils')
 
-// Reference - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Inheritance_and_the_prototype_chain
-
-// implementing our own versions of array methods
-// using prototypal inheritance
-
-// prototypal inheritance - you can use the .prototype
-// property on a class to add new methods to the class
-
-// you have to use function declarations to add methods to a class
-// since the scope of this gets set differently with arrow functions
-
 // simple reimplementation of the map function that
 // only accepts a callback function and returns a new
 // array based on the results of the callback function
+
 Array.prototype.mappy = function(callback) {
   const newArray = []
 
@@ -100,4 +90,8 @@ Array.prototype.mappy4 = function(callback) {
 
 underlinePrint('Calling the new mappy4 array method with a string passed as the callback arg:')
 
-console.log([1, 2, 3, 4, 5, 6].mappy4('hello there'))
+try {
+  console.log([1, 2, 3, 4, 5, 6].mappy4('hello there'))
+} catch (error) {
+  console.log(`Caught error - ${error}`)
+}
