@@ -4,7 +4,7 @@ A place to store notes/examples of different node.js techniques, quirks and NPM 
 
 ## To Use
 
-1. After `git clone` run `yarn install`.\
+1. After `git clone` run `yarn install`.
 2. Run `yarn repl` to start the `repl` with libraries loaded into it already.
 
 ## Adding a Package to the REPL
