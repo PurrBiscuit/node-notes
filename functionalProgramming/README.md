@@ -10,7 +10,7 @@ A place to review some of the principles of function programming.
 
 > "Point-free style — aims to reduce some of the visual clutter by removing unnecessary parameter-argument mapping." - Kyle Simpson in Functional-Light JavaScript
 
-The object with point-free style programming is not to remove points (parameters/arguments) entirely from Javascript code (since this isn't possible), but rather to reduce the amount of unnecessary paramters/arguments in code.
+The object with point-free style programming is not to remove points (parameters/arguments) entirely from Javascript code (since this isn't possible), but rather to reduce the amount of unnecessary parameters/arguments in code.
 
 Example:
 
@@ -24,7 +24,7 @@ const newBooks = books.filter(point => isTechnology(point))
 const newBooks = books.filter(isTechnology)
 ```
 
-With point-free style you want to make function compositions point-free.  This means the higher-order functions that are composed from several smaller functions.  The smaller functions that compose the function do not have to be built in a point-free manner.  Eventually, the smallest functions that make up a larger function will have points.  This includes the many functions from popular libraries like `ramda` and `lodash`.  These functions take parameters and therefore can't be considered point-free.
+With point-free style you want to make function compositions point-free.  This means the higher-order functions that are composed from several smaller functions.  The smaller functions that compose the function do not have to be built in a point-free manner.  Eventually, the smallest functions that make up a larger function will have points.  This includes the many functions from popular libraries like `ramda` and `lodash`.  These functions take arguments and therefore can't be considered point-free.
 
 #### References
 
