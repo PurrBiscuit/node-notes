@@ -14,10 +14,10 @@ React Redux if the official React UI bindings layer for Redux.  It lets your Rea
 
 - [Connect Overview](https://react-redux.js.org/api/connect)
 
-The `connect` function connects a React component to a Redux store.  It provides a way for the connected component to receive data from a Redux store through its `props`, as well as a way for the connected component to update state in the Redux store.
+The `connect` function connects a React component to a Redux store.  It provides a way for the connected component to receive data from a Redux store through its props, as well as a way for the connected component to update state in the Redux store.
 
 ```
-const connect = (mapStateToProps?, mapDispathToProps?, mergeProps?, option?)
+const connect = (mapStateToProps?, mapDispatchToProps?, mergeProps?, option?)
 ```
 
 The `connect` function accepts four arguments, all optional:
@@ -38,7 +38,7 @@ If a `mapStateToProps` function is given to the `connect` function then the new 
 1. `state` - `Object`
 2. `ownProps?` - `Object` (optional)
 
-If the `mapStateToProps` function is only defined to take one parameter (`state`) then it will be called, and given the current store state as the argument, whenever the Redux store is updated.  If it takes two parameters (`state` and `ownProps`) then it will be called whenever Redux store state changes OR when the wrapper component receives new props from upstream.
+If the `mapStateToProps` function is only defined to take one parameter (`state`) then it will be called and given the current store state as the argument, whenever the Redux store is updated.  If it takes two parameters (`state` and `ownProps`) then it will be called whenever Redux store state changes OR when the wrapper component receives new props from upstream.
 
 `mapStateToProps` functions are expected to return a plain object, commonly referred to as `stateProps`.  This object will be merged as props to your connected component.  The return of `mapStateToProps` determines whether a connected component will re-render.
 
@@ -53,7 +53,7 @@ If a `mapDispatchToProps` function is given to the `connect` function then the n
 1. `dispatch` - `function`
 2. `ownProps?` - `object` (optional)
 
-The `dispatch` function is the `dispatch` method from the Redux store object.  If the functions is defined to take a second parameter, `ownProps`, it will be re-invoked whenever new props are passed to the wrapper component.
+The `dispatch` function is the `dispatch` method from the Redux store object.  If the function is defined to take a second parameter, `ownProps`, it will be re-invoked whenever new props are passed to the wrapper component.
 
 `mapDispatchToProps` functions are expected to return a plain object, commonly referred to as `dispatchProps`.  It will be merged as props to your connected component.  Each of the fields of the returned object has to be a function itself.  These functions will be accessible via the component's props, meaning they can be called like so - `this.props.addItem()`.  An example of a `mapDispatchToProps` function that returns an object with two fields to the wrapped component:
 
@@ -69,7 +69,8 @@ Using the example above, if this function where passed into `connect` as the sec
 ```
 const someComponent = props => {
   const addItem = id => {
-    console.log('Adding an item to the cart!)
+    console.log('Adding an item to the cart!')
+
     // calling the addItem dispatch method from the props object
     props.addItem(id)
   }
@@ -77,10 +78,22 @@ const someComponent = props => {
   return (
     <>
       <h1>Welcome to the store</h1>
-      <button onSubmit=addItem>Add Item</button>
+      <button onSubmit=addItem(1)>Add Item</button>
     </>
   )
 }
 ```
 
-`mapDispatchToProps` may be an object where each field is an action creator.  In this case, React-Redux binds the `dispatch` of your store to each of the action creators using `bindActionCreators`.
+`mapDispatchToProps` may be an object where each field is an action creator.  In this case, React-Redux binds the `dispatch` of your store to each of the action creators using `bindActionCreators`.  An example of using an object instead of function for `mapDispatchToProps`:
+
+```
+import { addTodo, deleteTodo, toggleTodo } from './actionCreators'
+
+const mapDispatchToProps = {
+  addTodo,
+  deleteTodo,
+  toggleTodo,
+}
+
+export default connect(null, mapDispatchToProps)(TodoApp)
+```
