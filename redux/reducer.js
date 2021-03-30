@@ -1,3 +1,9 @@
+const {
+  ADD_BUG,
+  REMOVE_BUG,
+  RESOLVE_BUG
+} = require('./actionTypes')
+
 let lastId = 0
 
 // this reducer function will respond to two action types:
@@ -9,7 +15,7 @@ let lastId = 0
 // will contain all of our bugs that we're tracking
 const reducer = (state = [], action) => {
   switch (action.type) {
-  case 'ADD_BUG':
+  case ADD_BUG:
     return [
       ...state,
       {
@@ -18,10 +24,19 @@ const reducer = (state = [], action) => {
         resolved: false
       }
     ]
-  case 'REMOVE_BUG':
+  case REMOVE_BUG:
     return state.filter(({ id }) =>
       action.payload.id !== id
     )
+  case RESOLVE_BUG:
+    return state.map(bug =>
+      action.payload.id !== bug.id
+        ? bug
+        : {
+          ...bug,
+          resolved: true
+        }
+      )
   default:
     return state
   }
