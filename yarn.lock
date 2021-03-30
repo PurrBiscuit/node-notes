@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@articulate/ducks@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@articulate/ducks/-/ducks-0.1.1.tgz#f02e93894e36ef6359084b89d3b0d345f516c708"
+  integrity sha512-DSqpDY5GFZb3NnV9o7s2czw//tya7zovQyOUjk9ZAD8RsStT9r//UP+dnZR+as3IQd/CaV3mYXxpEacrBzbHNA==
+  dependencies:
+    crocks "^0.10.1"
+
 "@hapi/hoek@^9.0.0":
   version "9.1.1"
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.1.1.tgz#9daf5745156fd84b8e9889a2dc721f0c58e894aa"
@@ -51,6 +58,11 @@ axios@^0.21.1:
   integrity sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==
   dependencies:
     follow-redirects "^1.10.0"
+
+crocks@^0.10.1:
+  version "0.10.2"
+  resolved "https://registry.yarnpkg.com/crocks/-/crocks-0.10.2.tgz#4bf139c8ccb2651ee682485d2c296cd4d62c0e0d"
+  integrity sha512-ifOgeKTXX+QUuTHoIshbqiPTPMkM52eqx/b2fqcfywBZx3bBpoVjCrKypq6jPfiIrd9It4AstSdtmNmUNA67Nw==
 
 debug@=3.1.0:
   version "3.1.0"

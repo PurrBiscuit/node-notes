@@ -8,6 +8,7 @@ r.context = Object.assign(
     ...require('ramda'),
     axios: require('axios'),
     crypto: require('crypto'),
+    ducks: require('@articulate/ducks'),
     joi: require('joi'),
     kratos: require('@oryd/kratos-client'),
     lodash: require('lodash'),
