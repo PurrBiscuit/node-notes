@@ -42,6 +42,24 @@ If the `mapStateToProps` function is only defined to take one parameter (`state`
 
 `mapStateToProps` functions are expected to return a plain object, commonly referred to as `stateProps`.  This object will be merged as props to your connected component.  The return of `mapStateToProps` determines whether a connected component will re-render.
 
+#### Useage Guidelines for mapStateToProps
+
+**Let `mapStateToProps` Reshape the Data from the Store**
+
+`mapStateToProps` can, and should, do a lot more than just `return state.someSlice`.  They have the responsibility of "re-shaping" store data as needed for that component.
+
+**Use Selector Functions to Extract and Transform Data**
+
+Selector functions can be used to help encapsulate the process of extracting values from specific locations in the state tree, as well as improve application performance.
+
+**`mapStateToProps` Functions Should Be Fast**
+
+Whenever the store changes, all of the `mapStateToProps` functions of all of the connected components will run.  A slow `mapStateToProps` can be a potential bottleneck for your application.  If performance is a concern, ensure that these transformations are only run if the input values have changed.
+
+**`mapStateToProps` Functions Should Be Pure and Synchronous**
+
+Like a Redux reducer, a `mapStateToProps` function should always be 100% pure and synchronous.  It should not mutate the arguments it's given and should return a new props object.  It should not be used to trigger asynchronous behavior like AJAX calls for data fetching.
+
 ### mapDispatchToProps
 
 - [Dispatching Actions with `mapDispatchToProps`](https://react-redux.js.org/using-react-redux/connect-mapdispatch)
@@ -97,3 +115,28 @@ const mapDispatchToProps = {
 
 export default connect(null, mapDispatchToProps)(TodoApp)
 ```
+
+#### Approaches for Dispatching
+
+If you don't specify a `mapDispatchToProps` function as the second argument to `connect` then your connected component will receive `dispatch` by default.  For example:
+
+```
+connect(mapStateToProps)(MyComponent)
+```
+
+Will result in the `dispatch` function being directly accessible in the `MyComponent` component now via it's props.  For example:
+
+```
+const MyComponent = props => {
+  return (
+    <div>
+      <button onClick={() => props.dispatch({ type: 'INCREMENT' })}>+</button>
+    </div>
+  )
+}
+```
+
+Providing a `mapDispatchToProps` allows you to specify which actions your component might need to dispatch.  The benefits of providing action dispatching functions directly, instead of the default `dispatch` passed as a prop to your component include:
+
+1. More Declarative - Encapsulating the dispatch logic into functions makes the implementation more declarative.  Doesn't expose the `dispatch` function itself to the component, but rather individual functions that implement the `dispatch` functionality under-the-hood with a descriptive name, like `increment`.
+2. Pass Down Action Dispatching Logic to (Unconnected) Child Components - Gives you the ability to pass down the action dispatching function to child components.  This allows more components to dispatch actions, while keeping them "unaware" of Redux.
