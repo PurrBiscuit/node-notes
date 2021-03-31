@@ -12,6 +12,7 @@ r.context = Object.assign(
     joi: require('joi'),
     kratos: require('@oryd/kratos-client'),
     lodash: require('lodash'),
+    qs: require('query-string'),
     requireDir: require('require-dir')
   }
 )
