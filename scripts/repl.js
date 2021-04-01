@@ -9,6 +9,8 @@ r.context = Object.assign(
     axios: require('axios'),
     crypto: require('crypto'),
     ducks: require('@articulate/ducks'),
+    gimme: require('@articulate/gimme'),
+    funky: require('@articulate/funky'),
     joi: require('joi'),
     kratos: require('@oryd/kratos-client'),
     lodash: require('lodash'),
