@@ -14,6 +14,7 @@ r.context = Object.assign(
     kratos: require('@oryd/kratos-client'),
     lodash: require('lodash'),
     qs: require('query-string'),
-    requireDir: require('require-dir')
+    requireDir: require('require-dir'),
+    reselect: require('reselect')
   }
 )
