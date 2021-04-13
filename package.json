@@ -5,7 +5,7 @@
   "main": "scripts/repl.js",
   "scripts": {
     "repl": "node scripts/repl.js",
-    "test": "mocha './mocha/test/**/*.js'"
+    "test": "mocha './mocha/test/' --recursive"
   },
   "author": "",
   "license": "ISC",
