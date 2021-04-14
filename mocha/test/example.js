@@ -1,7 +1,7 @@
 describe('example test suite', () => {
-  beforeEach('first beforeEach hook', () => console.log('this is the first beforeEach hook'))
-  beforeEach('second beforeEach hook', () => console.log('this is the second beforeEach hook'))
-  before('first before hook', () => console.log('this before is only run once'))
+  beforeEach('first beforeEach hook', () => console.log('      this is the first beforeEach hook'))
+  beforeEach('second beforeEach hook', () => console.log('      this is the second beforeEach hook'))
+  before('first before hook', () => console.log('    this before is only run once'))
 
   it('should pass', () => {})
 
