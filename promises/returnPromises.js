@@ -20,20 +20,24 @@ p1
     underlinePrint('returning a rejected promise from within a promise chain:')
   })
 
-  const p2 = promisifiedTimeout(4000, 'resolve', 'promise p2 resolved after 4 seconds')
+// promises can also be rejected from within a promise chain
+// and handled by a .catch on the same level as the original promise
+// so long as the promise in the chain is returned by the handler
 
-  p2
-    .then(res => {
-      console.log(res)
-      return 'new value to resolve the next .then() to'
-    })
-    .then(res => {
-      console.log(res)
-      return promisifiedTimeout(2000, 'reject', 'promise inside p2 chain rejected after 2 second')
-    })
-    .then(() => {
-      console.log('this will never run because of the rejected promise above')
-    })
-    .catch(error => {
-      console.log('ERROR caught ->', error)
-    })
+const p2 = promisifiedTimeout(4000, 'resolve', 'promise p2 resolved after 4 seconds')
+
+p2
+  .then(res => {
+    console.log(res)
+    return 'new value to resolve the next .then() to'
+  })
+  .then(res => {
+    console.log(res)
+    return promisifiedTimeout(2000, 'reject', 'promise inside p2 chain rejected after 2 second')
+  })
+  .then(() => {
+    console.log('this will never run because of the rejected promise above')
+  })
+  .catch(error => {
+    console.log('ERROR caught ->', error)
+  })
