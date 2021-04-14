@@ -1,6 +1,8 @@
+const { yellow } = require('chalk')
+
 describe('this is a first level of a test-suite', () => {
   beforeEach('beforeEach in first level', () =>
-    console.log('        run before each test in the describes nested below')
+    console.log(yellow('        run before each test in the describes nested below'))
   )
 
   describe('this is a second level of a test-suite', () => {

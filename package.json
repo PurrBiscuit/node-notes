@@ -14,6 +14,7 @@
     "@articulate/funky": "^1.9.2",
     "@oryd/kratos-client": "^0.5.4-alpha.1",
     "axios": "^0.21.1",
+    "chalk": "^4.1.0",
     "joi": "^17.4.0",
     "lodash": "^4.17.20",
     "mocha": "^8.3.2",
