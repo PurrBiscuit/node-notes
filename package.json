@@ -4,8 +4,10 @@
   "description": "For Testing NPM modules in the Node REPL",
   "main": "scripts/repl.js",
   "scripts": {
+    "coverage:pluralsight": "cd pluralsight-node-testing && npm run coverage",
     "repl": "node scripts/repl.js",
-    "test": "mocha './mocha/test/' --recursive --timeout 5000"
+    "test": "mocha './mocha/test/' --recursive --timeout 5000",
+    "test:pluralsight": "cd pluralsight-node-testing && npm run test"
   },
   "author": "",
   "license": "ISC",
