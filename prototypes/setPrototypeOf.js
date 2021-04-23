@@ -33,7 +33,7 @@ cat.talk()
 // using the cat object to delegate the sound property
 // to on a new bigCat object using Object.setPrototypeOf
 
-underlinePrint('Using Object.setPrototypeOf to get access to a prototypes property:')
+underlinePrint('Using Object.setPrototypeOf to get access to a prototype\'s property:')
 
 const bigCat = {
   loudSound: function () {
@@ -54,7 +54,7 @@ bigCat.loudSound()
 underlinePrint('Updating the talk method on the animal prototype:')
 
 animal.talk = function() {
-  console.log('the talk method has been updated')
+  console.log('the talk method has been updated...')
 }
 
 // the two objects that are using the animal prototype will now
