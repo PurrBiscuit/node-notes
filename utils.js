@@ -1,6 +1,8 @@
+const { yellow } = require('chalk')
+
 const underlinePrint = msg => {
-  console.log(`\n${msg}`)
-  console.log('-'.repeat(msg.length))
+  console.log(`\n${yellow(msg)}`)
+  console.log(yellow('-').repeat(msg.length))
 }
 
 module.exports = {
