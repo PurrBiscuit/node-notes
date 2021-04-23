@@ -15,7 +15,7 @@ class BrokenPerson {
 
   callbackHi() {
     // this doesn't work since the context of this gets lost
-    // in the SayHi function as it's passed as a callback to setTimeout
+    // in the SayHi function as it's passed as a callback
     callback(this.sayHi)
   }
 }
