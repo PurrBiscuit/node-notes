@@ -14,13 +14,13 @@ The object with point-free style programming is not to remove points (parameters
 
 Example:
 
-```
+```javascript
 const newBooks = books.filter(point => isTechnology(point))
 ```
 
 ...can be rewritten to remove the unneeded `point` parameter/argument by removing the unneeded outer function around `isTechnology`...
 
-```
+```javascript
 const newBooks = books.filter(isTechnology)
 ```
 

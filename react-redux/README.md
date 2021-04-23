@@ -16,7 +16,7 @@ React Redux if the official React UI bindings layer for Redux.  It lets your Rea
 
 The `connect` function connects a React component to a Redux store.  It provides a way for the connected component to receive data from a Redux store through its props, as well as a way for the connected component to update state in the Redux store.
 
-```
+```javascript
 const connect = (mapStateToProps?, mapDispatchToProps?, mergeProps?, option?)
 ```
 
@@ -75,7 +75,7 @@ The `dispatch` function is the `dispatch` method from the Redux store object.  I
 
 `mapDispatchToProps` functions are expected to return a plain object, commonly referred to as `dispatchProps`.  It will be merged as props to your connected component.  Each of the fields of the returned object has to be a function itself.  These functions will be accessible via the component's props, meaning they can be called like so - `this.props.addItem()`.  An example of a `mapDispatchToProps` function that returns an object with two fields to the wrapped component:
 
-```
+```javascript
 const mapDispatchToProps = dispatch => ({
   addItem: id => dispatch({ type: 'ADD_ITEM', payload: { id } }),
   removeItem: id => dispatch({ type: 'REMOVE_ITEM', payload: { id } })
@@ -84,7 +84,7 @@ const mapDispatchToProps = dispatch => ({
 
 Using the example above, if this function where passed into `connect` as the second argument (ie. `connect(null, mapDispatchToProps)`), then the wrapped component would receive two additional props called `addItem` and `removeItem` in addition to any props received from parent components.  These two props are functions and could be called within the component to send `dispatch` actions to the Redux store to update state.  An example of calling one of those functions based on a user's action could look like:
 
-```
+```javascript
 const someComponent = props => {
   const addItem = id => {
     console.log('Adding an item to the cart!')
@@ -104,7 +104,7 @@ const someComponent = props => {
 
 `mapDispatchToProps` may be an object where each field is an action creator.  In this case, React-Redux binds the `dispatch` of your store to each of the action creators using `bindActionCreators`.  An example of using an object instead of function for `mapDispatchToProps`:
 
-```
+```javascript
 import { addTodo, deleteTodo, toggleTodo } from './actionCreators'
 
 const mapDispatchToProps = {
@@ -120,13 +120,13 @@ export default connect(null, mapDispatchToProps)(TodoApp)
 
 If you don't specify a `mapDispatchToProps` function as the second argument to `connect` then your connected component will receive `dispatch` by default.  For example:
 
-```
+```javascript
 connect(mapStateToProps)(MyComponent)
 ```
 
 Will result in the `dispatch` function being directly accessible in the `MyComponent` component now via it's props.  For example:
 
-```
+```javascript
 const MyComponent = props => {
   return (
     <div>

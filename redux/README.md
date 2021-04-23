@@ -28,7 +28,7 @@ The reducer is a function that's defined to accept the `store` object and an `ac
 
 Remember, reducer's are pure functions.  They don't touch global state, they don't mutate their arguments and they don't have any side effects.  They just get the current store instance and return an updated one.
 
-```
+```javascript
 const reducer = (store, action) => {
   // do some things to the store object here based on the action sent to the reducer
 }
@@ -36,7 +36,7 @@ const reducer = (store, action) => {
 
 You can then pass the reducer function to the `createStore` Redux function to create a new `store` object for use in an application.
 
-```
+```javascript
 const { createStore } = require('redux')
 
 const store = createStore(reducer)
@@ -44,7 +44,7 @@ const store = createStore(reducer)
 
 All the updates to a Redux store do not need to happen with a single reducer.  If there are many different fields in a `store` object then different reducers can be created to handle the different fields in the store separately.  For example, a store with four different fields (slices):
 
-```
+```javascript
 {
   categories: [],
   products: [],
