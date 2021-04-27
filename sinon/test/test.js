@@ -10,12 +10,12 @@ function greet(name) {
 
 describe("testing the greeter", function() {
   it("checks the greet function", function() {
+    // overwriting the clock used by the system to a hardcoded value
     const clock = sinon.useFakeTimers(new Date(2021, 0, 15))
-    console.log(new Date())
 
     assert.strictEqual(greet('Alice'), 'Hello, Alice! Today is Friday, January 15, 2021')
 
+    // reseting the useFakeTimers method overwriting so it's back to normal
     clock.restore()
-    console.log(new Date())
   });
 });
