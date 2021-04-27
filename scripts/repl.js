@@ -15,6 +15,7 @@ r.context = Object.assign(
     lodash: require('lodash'),
     qs: require('query-string'),
     requireDir: require('require-dir'),
-    reselect: require('reselect')
+    reselect: require('reselect'),
+    sinon: require('sinon')
   }
 )
