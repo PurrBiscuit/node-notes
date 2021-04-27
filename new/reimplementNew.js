@@ -4,7 +4,7 @@ const { underlinePrint } = require('../utils')
 //   1. It creates a new, empty, plain old Javascript object.
 //   2. It sets the prototype of that new object to the constructor's prototype.
 //   3. It applies the arguments in the constructor function call
-//      to the newly created, empty, object and returns the object.
+//      to the newly created, empty, object.
 //   4. It returns the created object.
 
 // Demonstrating the steps that 'new' takes when creating
