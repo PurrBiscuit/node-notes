@@ -7,7 +7,8 @@
     "coverage:pluralsight": "cd pluralsight-node-testing && npm run coverage",
     "repl": "node scripts/repl.js",
     "test": "mocha './mocha/test/' --recursive --timeout 5000",
-    "test:pluralsight": "cd pluralsight-node-testing && npm run test"
+    "test:pluralsight": "mocha './pluralsight-node-testing/test/' --recursive --timeout 5000",
+    "test:sinon": "mocha './sinon/test/' --recursive --timeout 5000"
   },
   "author": "",
   "license": "ISC",
