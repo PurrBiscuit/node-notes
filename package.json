@@ -8,6 +8,7 @@
     "repl": "node scripts/repl.js",
     "test": "mocha './mocha/test/' --recursive --timeout 5000",
     "test:pluralsight": "mocha './pluralsight-node-testing/test/' --recursive --timeout 5000",
+    "test:proxyquire": "mocha './proxyquire/test/' --recursive --timeout 5000",
     "test:sinon": "mocha './sinon/test/' --recursive --timeout 5000"
   },
   "author": "",
