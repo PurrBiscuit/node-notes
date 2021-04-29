@@ -11,11 +11,43 @@
 
 ### Spies
 
+**Important notes:**
+
+**- you never spy on the function under test.**
+**- you should spy on functions that are dependencies of the function under test.**
+
 Spies record some information based on how they were called.  They do more than just adhere to the expected interface.  They can also record useful information about the interactions that happened between them and the test code.
+
+Sinon defines a spy as a function that records arguments, return value, the value of 'this' and any exceptions thrown (if any) for all its calls.
 
 `sinon.spy()` can be used to create a fake function that can be spied on.
 
 `sinon.spy(obj, '<functionname>')` can be used to wrap an actual method on an object so that it can be spied on.  This won't alter the behavior of the method at all, but rather will let us see how the method was called.
+
+Spies can answer the following questions:
+- What arguments were passed in?
+- What value was returned?
+- Did it throw an exception?
+- How many times did it get called?
+
+Spies are used not to answer those questions for functions that you are testing directly in a test, but rather are used to spy on any functions that may exist in the function you are testing as a dependency.
+
+Example of spying on a function that is a dependency of a function under test:
+
+```
+function createUser (login, pwd) {
+  const user = new User(login, pwd)
+  db.save('users', user)
+}
+```
+
+In the example above you wouldn't want to spy on the `createUser` function since that'd be the function under test.  You would, however, want to spy on the `db.save` call to make sure it was called correctly.  You can accomplish that with `sinon` by doing the following:
+
+`const dbSaveSpy = sinon.spy(db, 'save')`
+
+You can remove the spy on the method with the following as well:
+- remove the spy from just the one method - `dbSaveSpy.restore()`
+- remove all spies, stubs, and mocks from all methods in the current sinon sandbox - `sinon.restore()`
 
 ### Stubs
 
