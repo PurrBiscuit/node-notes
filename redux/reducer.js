@@ -6,10 +6,11 @@ const {
 
 let lastId = 0
 
-// this reducer function will respond to two action types:
+// this reducer function will respond to three action types:
 // 1. ADD_BUG - will add a bug to our fake
 //    bug tracking application's state
 // 2. REMOVE_BUG - will remove a bug from state based on id in payload.
+// 3. RESOLVE_BUG - will set resolved to true for the bug.
 
 // in our example app, the state is a simple array that
 // will contain all of our bugs that we're tracking
