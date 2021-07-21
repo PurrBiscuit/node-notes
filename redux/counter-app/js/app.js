@@ -40,6 +40,12 @@ incrementButton.addEventListener('click', () => {
 // subscribe a function to the store that will
 // set the value of the counter in the DOM to
 // the current value from state in the store.
-store.subscribe(() => {
+const renderValue = () => {
   counterValue.innerText = store.getState().value
-})
+}
+
+// render the counterValue innerText with the initial
+// value from state (which is defined in the reducer).
+renderValue()
+
+store.subscribe(renderValue)
