@@ -2,6 +2,7 @@
 
 ## References
 
+- [Egghead.io - Fundamentals of Redux Course from Dan Abramov](https://egghead.io/lessons/react-redux-the-single-immutable-state-tree)
 - [Redux NPM Page](https://www.npmjs.com/package/redux)
 - [Youtube - Redux Tutorial](https://www.youtube.com/watch?v=poQXNp9ItL4)
 
@@ -13,7 +14,7 @@ Redux is a library used for application state management.  It's described as a "
 
 ### Store
 
-The central location where state is held.  A store object can be created using the `createStore` Redux function.  The `createStore` function takes a function as it's argument.  This function is called a `reducer`.  The `reducer` function is what makes the updates to the state in the Redux store based on the actions it receives from the `dispatch` method.
+The central location where state is held.  A store object can be created using the `createStore` Redux function.  The `createStore` function takes a function as its argument.  This function is called a `reducer`.  The `reducer` function is what makes the updates to the state in the Redux store based on the actions it receives from the `dispatch` method.
 
 The store object also has several methods that can be used to interact with the state and send out store events to listeners.  These methods include:
 
@@ -24,13 +25,13 @@ The store object also has several methods that can be used to interact with the 
 
 ### Reducer
 
-The reducer is a function that's defined to accept the `store` object and an `action` argument.  It will take the `action` item and perform updates to the `store` object based on the action type that was sent to the reducer function via the `dispatch` method.  The reducer will return an updated `store` object - it will NOT modify the `store` object that was passed to it directly.  The `store` object should be treated as an immutable object and never updated (mutated) directly.  Common ways to do this include using the spread operator to copy the existing `store` object into a new object, and the return that new object from the `reducer` function.
+The reducer is a function that's defined to accept the `state` object and an `action` object as its arguments.  It will take the `action` object and perform updates to the `state` object based on the action type that was sent to the reducer function via the `dispatch` method.  The reducer will return an updated `state` object - it will NOT modify the `state` object that was passed to it directly.  The `state` object should be treated as an immutable object and never updated (mutated) directly.  Common ways to do this include using the spread operator to copy the existing `state` object into a new object, and the return that new object from the `reducer` function.
 
-Remember, reducer's are pure functions.  They don't touch global state, they don't mutate their arguments and they don't have any side effects.  They just get the current store instance and return an updated one.
+Remember, reducer's are pure functions.  They don't touch global state, they don't mutate their arguments and they don't have any side effects.  They just get the current `state` instance and return an updated one.
 
 ```javascript
-const reducer = (store, action) => {
-  // do some things to the store object here based on the action sent to the reducer
+const reducer = (state, action) => {
+  // do some things to the state object here based on the action sent to the reducer
 }
 ```
 
@@ -42,7 +43,7 @@ const { createStore } = require('redux')
 const store = createStore(reducer)
 ```
 
-All the updates to a Redux store do not need to happen with a single reducer.  If there are many different fields in a `store` object then different reducers can be created to handle the different fields in the store separately.  For example, a store with four different fields (slices):
+All the updates to a Redux `state` do not need to happen with a single reducer.  If there are many different fields in a `state` object then different reducers can be created to handle the different fields in the store separately.  For example, a store with four different fields (slices):
 
 ```javascript
 {
@@ -53,7 +54,32 @@ All the updates to a Redux store do not need to happen with a single reducer.  I
 }
 ```
 
-Each field (slice) can be managed by a separate reducer function.
+Each field (slice) can be managed by a separate reducer function.  You do, however, need to combine all the separate reducers that manage slices of the `state` into a final, rootReducer function.  This rootReducer function would then be passed to the `createStore` function.  An example would look like:
+
+```javascript
+const toDoReducer = (state, action) => {
+  switch (action.type) {
+    case 'todo/ADD_TODO':
+      return [ ...state, action.payload ]
+    default:
+      return state
+  }
+}
+
+const counterReducer = (state, action) => {
+  switch (action.type) {
+    case 'counter/INCREMENT':
+      return { value: state.value + 1 }
+    default:
+      return state
+  }
+}
+
+const rootReducer = (state = { counter: { value: 0 }, todos: [] }, action) => ({
+  counter: counterReducer(state.counter, action),
+  todos: toDoReducer(state.todos, action)
+})
+```
 
 ### Action
 
