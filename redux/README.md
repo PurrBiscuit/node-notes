@@ -65,7 +65,7 @@ All the updates to a Redux `state` do not need to happen with a single reducer. 
 Each field (slice) can be managed by a separate reducer function.  You do, however, need to combine all the separate reducers that manage slices of the `state` into a final, rootReducer function.  This rootReducer function would then be passed to the `createStore` function.  An example would look like:
 
 ```javascript
-const toDoReducer = (state, action) => {
+const toDoReducer = (state = [], action) => {
   switch (action.type) {
     case 'todo/ADD_TODO':
       return [ ...state, action.payload ]
@@ -74,7 +74,7 @@ const toDoReducer = (state, action) => {
   }
 }
 
-const counterReducer = (state, action) => {
+const counterReducer = (state = { value: 0 }, action) => {
   switch (action.type) {
     case 'counter/INCREMENT':
       return { value: state.value + 1 }
@@ -83,7 +83,7 @@ const counterReducer = (state, action) => {
   }
 }
 
-const rootReducer = (state = { counter: { value: 0 }, todos: [] }, action) => ({
+const rootReducer = (state = {}, action) => ({
   counter: counterReducer(state.counter, action),
   todos: toDoReducer(state.todos, action)
 })
