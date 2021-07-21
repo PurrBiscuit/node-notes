@@ -10,6 +10,14 @@
 
 Redux is a library used for application state management.  It's described as a "predicatable state container for Javascript apps" from the [Redux docs on npm](https://www.npmjs.com/package/redux).
 
+## Three Principles of Redux
+
+[Redux Three Principles](https://redux.js.org/understanding/thinking-in-redux/three-principles)
+
+1. `Single source of truth` - The global `state` of your application is stored in an object tree within a single `store`.
+2. `State is read-only` - The only way to change the state is to emit an `action`, an object describing what happened.
+3. `Changes are made with pure functions` - To specify how the state tree is transformed by actions, you write pure `reducers`.  Reducers are just pure functions that take the previous state and an action, and return the next state.
+
 ## Redux Terminology
 
 ### Store
