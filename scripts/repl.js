@@ -13,6 +13,7 @@ r.context = Object.assign(
     joi: require('joi'),
     kratos: require('@oryd/kratos-client'),
     lodash: require('lodash'),
+    md: require('markdown-it')({ html: true }),
     qs: require('query-string'),
     requireDir: require('require-dir'),
     reselect: require('reselect'),
