@@ -2,6 +2,9 @@ const repl = require('repl')
 
 r = repl.start('recipe_connection > ')
 
+// the 'classnames' package doesn't work properly
+// in this repl.js file; use in a regular node repl instead.
+
 r.context = Object.assign(
   r.context,
   {
@@ -17,6 +20,7 @@ r.context = Object.assign(
     qs: require('query-string'),
     requireDir: require('require-dir'),
     reselect: require('reselect'),
-    sinon: require('sinon')
+    sinon: require('sinon'),
+    styled: require('styled-components')
   }
 )
