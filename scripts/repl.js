@@ -11,6 +11,7 @@ r.context = Object.assign(
     ...require('ramda'),
     axios: require('axios'),
     crypto: require('crypto'),
+    crocks: require('crocks'),
     ducks: require('@articulate/ducks'),
     funky: require('@articulate/funky'),
     joi: require('joi'),
