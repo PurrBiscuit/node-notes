@@ -48,7 +48,7 @@ describe('urlGetter (with just sinon.stub())', () => {
       expect(urlGetter.returnAxiosObject().put).to.equal('something')
     )
 
-    afterEach('', () => {
+    afterEach('restore all stubbed out functions', () => {
       sinon.restore()
     })
   })
