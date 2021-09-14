@@ -51,6 +51,8 @@ const { createStore } = require('redux')
 const store = createStore(reducer)
 ```
 
+### Reducer Composition
+
 All the updates to a Redux `state` do not need to happen with a single reducer.  If there are many different fields in a `state` object then different reducers can be created to handle the different fields in the store separately.  For example, a store with four different fields (slices):
 
 ```javascript
@@ -88,6 +90,36 @@ const rootReducer = (state = {}, action) => ({
   todos: toDoReducer(state.todos, action)
 })
 ```
+
+Another way to combine reducers into a single rootReducer is to use the `combineReducers` functions from the `redux` package.
+
+```javascript
+const { combineReducers } = require('redux')
+
+const toDoReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'todo/ADD_TODO':
+      return [ ...state, action.payload ]
+    default:
+      return state
+  }
+}
+
+const counterReducer = (state = { value: 0 }, action) => {
+  switch (action.type) {
+    case 'counter/INCREMENT':
+      return { value: state.value + 1 }
+    default:
+      return state
+  }
+}
+
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  todos: toDoReducer
+})
+```
+
 
 ### Action
 
