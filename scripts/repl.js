@@ -9,6 +9,7 @@ r.context = Object.assign(
   r.context,
   {
     ...require('ramda'),
+    _: require('highland'),
     axios: require('axios'),
     crypto: require('crypto'),
     crocks: require('crocks'),

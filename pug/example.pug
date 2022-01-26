@@ -1,0 +1,141 @@
+doctype html
+html
+  head
+
+    //- including a css file in a pug template
+    link(href="css/style.css" rel="stylesheet")
+
+    //- or using an attribute object
+    -
+      const linkAttributes = {
+        href: 'css/style2.css',
+        rel: 'stylesheet'
+      }
+    link&attributes(linkAttributes)
+
+    //- defining CSS styles inline (no external file)
+    style.
+      p {
+        color: red;
+        text-decoration: underline;
+      }
+
+  body
+    //- outputs id="hello" on the p tag
+    p#hello Hello There!
+
+    //- outputs class="some-class" on the p tag
+    p.some-class This paragraph has a class attached to it
+
+    //- use a . after the tag and indent the next lines
+    //- to ouput multiline text.
+    p.
+      This is how you do
+      multiline in pug.
+
+    //- putting class name only will output a <div> tag by default in pug
+    .some-div-class
+
+    //- use () to add attributes to a tag
+    input.password-input(type="password" name="inpPwd")
+
+    //- using javascript to interpolate a value
+    p#p-using-javascript(data-js=`${ 5 > 2 ? "OK" : "NOT OK" }`)
+
+    //- sending variables to an element in pug
+    //- you need to add a dash ("-") character right before the tag
+    - const myName = "Steve"
+    p My name is #{myName}
+
+    //- any tags after the var is initialized can use it
+    p My name is also #{myName}
+
+    //- you can use an array to outline all classes at once to use for a tag
+    - const myClasses = [ "class-one", "class-two" ]
+    div(class=myClasses)
+
+    //- you can use an object to outline styles for an element
+    - const myStyles = { color: 'red', 'background-color': 'green' }
+    div(style=myStyles)
+
+    //- you can also do it multiline with the dash on a separate line
+    -
+      const myMultiStyles = {
+        color: 'blue',
+        'background-color': 'white'
+      }
+    div.multiline-style(style=myMultiStyles)
+      p Some text in a paragraph in the div
+
+    //- you can also use an object to outline attributes for an element
+    -
+      const myAttributes = {
+        src: "my-photo.png",
+        alt: "This is my photo"
+      }
+    img&attributes(myAttributes)
+
+    //- adding styling to an element directly
+    p(style="text-align: center; text-transform: uppercase") This is a styled paragraph
+
+    //- EACH/FOR LOOPS
+
+    //- Each Loop (without index)
+    h1 Each Loop Without Index
+    each num in [1, 2, 3]
+      p The number is #{num}
+
+    //- Each Loop (with index)
+    h1 Each Loop With Index
+    each num, idx in [100, 200, 300]
+      p The number is #{num} and the index is #{idx}
+
+    //- Each Loop (on object)
+    h1 Each Loop On Object
+    -
+      const someObj = {
+        age: 40,
+        name: 'Steve'
+      }
+    each val, key in someObj
+      p The key is #{key} and the value is #{val}
+
+    //- For Loop - identical in syntax to the each loops outlined above
+    h1 Each Loop With Index
+    for name, idx in ["Kevin", "Harry", "Marv"]
+      p The name is #{name} and the index is #{idx}
+
+    //- For Loop (with else) - the else will get triggered if the array or object is empty
+    h1 Each Loop With Else
+    for name, idx in []
+      p The name is #{name} and the index is #{idx}
+    else
+      strong Nothing in the array!
+
+    //- CONDITIONALS
+
+    //- IF/ELSE/ELSE-IF Statement
+    - const user = { username: 'JimmyCrackCorn', loggedIn: false, lastLogin: 6 }
+    if user.loggedIn
+      p
+        | Welcome back,
+        strong #{user.username}!
+        | How have you been?
+    else if user.lastLogin < 10
+      p Your last login was #{user.lastLogin} minutes ago.
+      a&attributes({ href: "login" }) Please Login Again
+    else
+      a&attributes({ href: "login" }) Please Login
+
+    //- Case Statement
+    - const orderStatus = 'Random'
+
+    case orderStatus
+      when 'Pending'
+        p Your order has been placed and will be sent out shortly.
+      when 'In Transit'
+        p Your order is on the move - your should receive it soon.
+      when 'Completed'
+        p Your order has been completed.
+      default
+        p We don't know what this status is.
