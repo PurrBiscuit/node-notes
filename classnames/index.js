@@ -11,3 +11,6 @@ console.log(classnames(['what'], {
   bye: false,
   yep: true
 }))
+
+underlinePrint('classnames(\'foo boo\', [\'what\', undefined, \'huh\'])')
+console.log(classnames('foo boo', ['what', undefined, 'huh']))
