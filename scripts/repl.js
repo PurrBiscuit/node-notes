@@ -14,6 +14,7 @@ r.context = Object.assign(
     crypto: require('crypto'),
     crocks: require('crocks'),
     ducks: require('@articulate/ducks'),
+    EventEmitter: require('eventemitter3'),
     funky: require('@articulate/funky'),
     joi: require('joi'),
     kratos: require('@oryd/kratos-client'),

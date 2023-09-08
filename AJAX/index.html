@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <div id="hello"></div>
+    <button onclick="fetchData()">Fetch Data</button>
+
+    <script>
+      function fetchData () {
+        const xhr = new XMLHttpRequest()
+  
+        xhr.onreadystatechange = function () {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("hello").innerHTML = this.responseText
+          }
+        }
+
+        xhr.open("GET", "data.txt", true)
+        xhr.setRequestHeader('Bingo', 'was his name, o')
+        xhr.send()
+      }
+    </script>
+  </body>
+</html>
