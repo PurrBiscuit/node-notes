@@ -19,4 +19,4 @@ const dataS = () =>
 dataS()
   .flatMap(compose(_, prop('data')))
   .tap(x => console.log(x))
-  .toArray(x => { console.log('done') })
+  .toArray(() => { console.log('done') })
